@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT439 Exam Survival Guide: Wireless & Mobile Networks</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Layout & Navigation */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* Navigation Scroll */
+        .nav-scroll {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.5) transparent;
+        }
+
+        .nav-scroll a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.2s;
+        }
+
+        .nav-scroll a:hover, .nav-scroll a.active {
+            background: white;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lecture-badge {
+            background: var(--primary-dark);
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+        }
+
+        /* Content Blocks */
+        .block {
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-concepts { color: var(--accent-purple); }
+        .icon-formulas { color: var(--accent-red); }
+        .icon-quickref { color: var(--accent-green); }
+        .icon-exam { color: var(--primary); }
+
+        /* Lists */
+        ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+
+        .arabic-term {
+            color: var(--secondary);
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        /* Formulas Box */
+        .formula-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--accent-red);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 1rem;
+        }
+
+        .formula-title {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-weight: 700;
+            color: var(--accent-red);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .formula-math {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .formula-note {
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Exam Questions */
+        .question-card {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .q-hint {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            font-style: italic;
+        }
+
+        .q-hint::before {
+            content: "💡 Hint: ";
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            margin-top: 2rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            header, footer, .nav-scroll { display: none; }
+            body { background: white; font-size: 11pt; }
+            section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; margin-bottom: 1rem; padding: 1rem; }
+            .formula-box { background: none; border: 1px solid #ccc; }
+            .question-card { background: none; border: 1px dashed #ccc; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .nav-scroll { padding-bottom: 1rem; }
+            h1 { font-size: 1.1rem; }
+            section { padding: 1.25rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div>
+            <h1>IT439 Exam Survival Guide</h1>
+            <span class="subtitle">Wireless & Mobile Networks</span>
+        </div>
+    </div>
+    <nav class="nav-scroll">
+        <a href="#lec1">Lec 1</a>
+        <a href="#lec2">Lec 2</a>
+        <a href="#lec3">Lec 3</a>
+        <a href="#lec4">Lec 4</a>
+        <a href="#lec5">Lec 5</a>
+        <a href="#lec6">Lec 6</a>
+        <a href="#lec7">Lec 7</a>
+        <a href="#lec8">Lec 8</a>
+        <a href="#lec9">Lec 9</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Lec 01 -->
+    <section id="lec1">
+        <h2><span class="lecture-badge">Lec 01</span> Antennas & Signal Propagation</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Antenna:</strong> A transducer that converts electrical signals to EM waves (Tx) and vice versa (Rx).</li>
+                <li><strong>Isotropic Radiator:</strong> Theoretical point source radiating equal power in all directions (3D sphere).</li>
+                <li><strong>Friis Transmission Equation:</strong> Relates transmitted power, antenna gains, distance, and wavelength to received power.</li>
+                <li><strong>Path Loss:</strong> Reduction in signal power density as it spreads over distance.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📐 Key Formulas</h3>
+            <div class="formula-box">
+                <span class="formula-title">Friis Transmission Equation</span>
+                <span class="formula-math">P<sub>r</sub> = P<sub>t</sub> G<sub>t</sub> G<sub>r</sub> (λ / 4πr)<sup>2</sup></span>
+                <div class="formula-note">
+                    <strong>P<sub>r</sub>:</strong> Received Power<br>
+                    <strong>P<sub>t</sub>:</strong> Transmitted Power<br>
+                    <strong>G<sub>t</sub>, G<sub>r</sub>:</strong> Antenna Gains (linear, not dB)<br>
+                    <strong>λ:</strong> Wavelength (m)<br>
+                    <strong>r:</strong> Distance (m)<br>
+                    <em>Use for: Calculating received power in free space Line-of-Sight (LOS).</em>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <span class="formula-title">Free-Space Path Loss (FSPL) in dB</span>
+                <span class="formula-math">L<sub>p</sub>(dB) = 20 log<sub>10</sub>(r) + 20 log<sub>10</sub>(f) - 147.56</span>
+                <div class="formula-note">
+                    <strong>r:</strong> Distance in meters<br>
+                    <strong>f:</strong> Frequency in Hz<br>
+                    <em>Note: If using km and GHz, constant becomes +92.45.</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference</h3>
+            <table>
+                <tr>
+                    <th>Antenna Type</th>
+                    <th>Pattern</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td>Wire (Dipole/Monopole)</td>
+                    <td>Omnidirectional (Donut)</td>
+                    <td>Radio, Cellular (Towers)</td>
+                </tr>
+                <tr>
+                    <td>Aperture (Horn/Dish)</td>
+                    <td>Directional</td>
+                    <td>Satellite, Radar, Microwave</td>
+                </tr>
+                <tr>
+                    <td>Microstrip (Patch)</td>
+                    <td>Directional/Flat</td>
+                    <td>Wi-Fi, Mobile phones, GPS</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Calculate the received power given P<sub>t</sub>, antenna gains, frequency, and distance.
+                <span class="q-hint">Use Friis equation. Calculate λ = c/f first. Ensure gains are linear, not dB.</span>
+            </div>
+            <div class="question-card">
+                Explain the difference between Link Budget and Friis Equation.
+                <span class="q-hint">Friis is ideal/theoretical (free space only). Link Budget includes real-world losses (cables, atmosphere, misc).</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 02 -->
+    <section id="lec2">
+        <h2><span class="lecture-badge">Lec 02</span> Antenna Radiation Patterns & Power</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Radiation Pattern:</strong> Graphical representation of radiation properties (strength vs. direction).</li>
+                <li><strong>HPBW (Half-Power Beamwidth):</strong> Angle between points where power is half (-3 dB) the peak.</li>
+                <li><strong>Directivity (D) vs. Gain (G):</strong> D focuses energy; G includes efficiency (η). G = η × D.</li>
+                <li><strong>EIRP:</strong> Effective Isotropic Radiated Power (Power × Gain relative to isotropic).</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📐 Key Formulas</h3>
+            <div class="formula-box">
+                <span class="formula-title">Antenna Gain (Aperture)</span>
+                <span class="formula-math">G = (4π A<sub>eff</sub>) / λ<sup>2</sup></span>
+                <div class="formula-note">
+                    <strong>A<sub>eff</sub>:</strong> Effective aperture area (m²)<br>
+                    <strong>λ:</strong> Wavelength<br>
+                    <em>Note: Larger dish/antenna = Higher Gain.</em>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <span class="formula-title">EIRP (Logarithmic Scale)</span>
+                <span class="formula-math">EIRP (dBm) = P<sub>t</sub> (dBm) + G<sub>t</sub> (dBi) - Line Loss (dB)</span>
+                <div class="formula-note">
+                    <em>Used to determine the actual strength of the signal leaving the antenna.</em>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <span class="formula-title">EIRP to ERP Conversion</span>
+                <span class="formula-math">ERP (dB) = EIRP (dB) - 2.15 dB</span>
+                <div class="formula-note">
+                    <em>Because a Dipole has 2.15 dBi gain relative to an Isotropic source.</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference</h3>
+            <ul>
+                <li><strong>dBi vs dBd:</strong> dBi is gain relative to isotropic (0 dBi). dBd is gain relative to dipole (0 dBd = 2.15 dBi).</li>
+                <li><strong>Lobes:</strong> Main Lobe (desired direction), Side Lobes (unwanted, waste energy), Back Lobe (opposite direction).</li>
+                <li><strong>Efficiency:</strong> η = η<sub>c</sub> (conductor) × η<sub>d</sub> (dielectric) × η<sub>m</sub> (mismatch).</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Convert Transmitter Power (mW) and Gain (dBi) to EIRP (dBm).
+                <span class="q-hint">Convert mW to dBm (10 log10(mW)). Then simply add the gain and subtract line losses.</span>
+            </div>
+            <div class="question-card">
+                Compare EIRP and ERP.
+                <span class="q-hint">ERP is compared to a dipole antenna. EIRP is compared to an isotropic source. EIRP is always 2.15 dB higher than ERP for the same antenna.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 03 -->
+    <section id="lec3">
+        <h2><span class="lecture-badge">Lec 03</span> Propagation Models</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Propagation Models:</strong> Mathematical predictions of signal strength (Empirical vs. Theoretical).</li>
+                <li><strong>LOS vs. NLOS:</strong> Line-of-Sight (clear path) vs. Non-Line-of-Sight (blocked, uses reflection/diffraction).</li>
+                <li><strong>Multipath Propagation:</strong> Signals arrive via multiple paths causing interference.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: Wave Phenomena</h3>
+            <table>
+                <tr>
+                    <th>Phenomenon</th>
+                    <th>Definition</th>
+                    <th>Typical Cause</th>
+                </tr>
+                <tr>
+                    <td><strong>Reflection</strong></td>
+                    <td>Bouncing off large surfaces</td>
+                    <td>Buildings, Earth, Water</td>
+                </tr>
+                <tr>
+                    <td><strong>Diffraction</strong> <span class="arabic-term">(الانحناء)</span></td>
+                    <td>Bending around corners/obstacles</td>
+                    <td>Hills, Roofs (Huygens' principle)</td>
+                </tr>
+                <tr>
+                    <td><strong>Scattering</strong> <span class="arabic-term">(التشتت)</span></td>
+                    <td>Reflection off rough/small objects</td>
+                    <td>Foliage, Street signs, Rain (5G)</td>
+                </tr>
+                <tr>
+                    <td><strong>Refraction</strong></td>
+                    <td>Bending due to density change</td>
+                    <td>Ionosphere (enables long-range radio)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: Models</h3>
+            <ul>
+                <li><strong>Okumura:</strong> Based on Tokyo measurements. Graphical. Basis for others.</li>
+                <li><strong>Hata Model:</strong> Empirical formula. Valid 150-1500 MHz. Urban/Suburban/Open.</li>
+                <li><strong>COST-231:</strong> Extension of Hata for higher frequencies (up to 2 GHz). Used for GSM/PCS/LTE.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Identify the propagation phenomenon described (e.g., signal reaches behind a hill).
+                <span class="q-hint">If it bends around an obstacle, it's Diffraction. If it bounces off, it's Reflection.</span>
+            </div>
+            <div class="question-card">
+                Compare Empirical vs. Theoretical models.
+                <span class="q-hint>Theoretical is physics-based (ideal). Empirical is based on statistical measurements (real world).</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 04 -->
+    <section id="lec4">
+        <h2><span class="lecture-badge">Lec 04</span> Fading in Wireless Environments</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Fading:</strong> Fluctuation in signal strength at the receiver.</li>
+                <li><strong>Large-Scale Fading:</strong> Path loss (distance) + Shadowing (obstacles).</li>
+                <li><strong>Small-Scale Fading:</strong> Rapid changes due to multipath (constructive/destructive interference).</li>
+                <li><strong>Doppler Shift:</strong> Frequency shift due to relative motion.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📐 Key Formulas</h3>
+            <div class="formula-box">
+                <span class="formula-title">Doppler Shift</span>
+                <span class="formula-math">f<sub>d</sub> = (v / c) × f<sub>c</sub></span>
+                <div class="formula-note">
+                    <strong>f<sub>d</sub>:</strong> Doppler frequency shift (Hz)<br>
+                    <strong>v:</strong> Velocity of receiver (m/s)<br>
+                    <strong>c:</strong> Speed of light (3×10<sup>8</sup> m/s)<br>
+                    <strong>f<sub>c</sub>:</strong> Carrier frequency (Hz)
+                </div>
+            </div>
+            <div class="formula-box">
+                <span class="formula-title">Antenna Spacing (Diversity)</span>
+                <span class="formula-math">d = λ / 2</span>
+                <div class="formula-note">
+                    <em>Rule of thumb: Space antennas at least half a wavelength apart to ensure uncorrelated fading paths.</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference</h3>
+            <table>
+                <tr>
+                    <th>Fading Type</th>
+                    <th>Cause</th>
+                    <th>Characteristic</th>
+                </tr>
+                <tr>
+                    <td><strong>Flat Fading</strong></td>
+                    <td>Channel BW > Signal BW</td>
+                    <td>Affects all frequencies equally</td>
+                </tr>
+                <tr>
+                    <td><strong>Frequency Selective</strong></td>
+                    <td>Signal BW > Channel BW</td>
+                    <td>Distorts signal (ISI)</td>
+                </tr>
+                <tr>
+                    <td><strong>Fast Fading</strong></td>
+                    <td>High mobility (Doppler)</td>
+                    <td>Rapid fluctuations</td>
+                </tr>
+                <tr>
+                    <td><strong>Slow Fading</strong></td>
+                    <td>Shadowing/Large obstacles</td>
+                    <td>Gradual average power change</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Calculate the Doppler shift for a car moving at 30 m/s using a 2 GHz frequency.
+                <span class="q-hint">Use f<sub>d</sub> = (v/c) * f. Ensure units match (m/s).</span>
+            </div>
+            <div class="question-card">
+                How does Spatial Diversity work?
+                <span class="q-hint>Uses multiple antennas separated by λ/2 to receive different uncorrelated signal copies, reducing the chance of deep fade.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 05 -->
+    <section id="lec5">
+        <h2><span class="lecture-badge">Lec 05</span> Fade Margin & Fresnel Zones</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Fade Margin:</strong> Extra "cushion" of power (dB) added to the link budget to handle unexpected fading/interference.</li>
+                <li><strong>Fresnel Zone:</strong> Ellipsoid area around the Line-of-Sight path where radio waves spread. Obstruction here causes signal loss.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📐 Key Formulas</h3>
+            <div class="formula-box">
+                <span class="formula-title">Fade Margin</span>
+                <span class="formula-math">FM = RSS<sub>actual</sub> - Rx<sub>threshold</sub></span>
+                <div class="formula-note">
+                    <em>Calculated by subtracting the minimum required signal (Receiver Sensitivity) from the actual received signal strength.</em>
+                </div>
+            </div>
+            <div class="formula-box">
+                <span class="formula-title">1st Fresnel Zone Radius (at midpoint)</span>
+                <span class="formula-math">r = 8.66 × √(D / f)</span>
+                <div class="formula-note">
+                    <strong>D:</strong> Total distance (km)<br>
+                    <strong>f:</strong> Frequency (GHz)<br>
+                    <em>Rule of thumb: Keep at least 60% of the 1st Fresnel zone clear (0.6 × r).</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference</h3>
+            <ul>
+                <li><strong>Typical Fade Margins:</strong>
+                    <ul>
+                        <li>Urban Cellular: 10-20 dB</li>
+                        <li>Microwave Links: 20-40 dB (High!)</li>
+                        <li>Wi-Fi Indoor: 10-15 dB</li>
+                    </ul>
+                </li>
+                <li><strong>Improving Margin:</strong> Increase Tx power, Use High-Gain Antennas, Diversity, Lower Frequency.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                A link needs 20 dB margin. The receiver sensitivity is -80 dBm. What RSS is needed?
+                <span class="q-hint">RSS = Threshold + Margin = -80 + 20 = -60 dBm.</span>
+            </div>
+            <div class="question-card">
+                Calculate the radius of the Fresnel zone at the midpoint for a 10km link at 5 GHz.
+                <span class="q-hint">Use r = 8.66 * sqrt(10/5). Then calculate 60% clearance.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 06 -->
+    <section id="lec6">
+        <h2><span class="lecture-badge">Lec 06</span> Microwave Link Design</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Link Budget:</strong> Accounting for all gains and losses to ensure received power > sensitivity.</li>
+                <li><strong>Earth Curvature:</strong> The earth bulges, requiring higher antennas for long links.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>📐 Key Formulas</h3>
+            <div class="formula-box">
+                <span class="formula-title">Link Budget Equation (Solve for Pr)</span>
+                <span class="formula-math">P<sub>r</sub> = P<sub>t</sub> + G<sub>t</sub> + G<sub>r</sub> - L<sub>p</sub> - L<sub>sys</sub> - L<sub>misc</sub></span>
+                <div class="formula-note">
+                    <em>All values in dB. Gains are (+), Losses are (-).</em>
+                </div>
+            </div>
+            <div class="formula-box">
+                <span class="formula-title">Earth Curvature Height (h)</span>
+                <span class="formula-math">h ≈ D<sup>2</sup> / (8 × R)</span>
+                <div class="formula-note">
+                    <strong>D:</strong> Distance (km)<br>
+                    <strong>R:</strong> Earth Radius (~6371 km)<br>
+                    <em>Used to calculate minimum antenna height to overcome the bulge.</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: Design Steps</h3>
+            <ol>
+                <li>Calculate FSPL (Free Space Path Loss).</li>
+                <li>Calculate Antenna Gains (from diameter/efficiency).</li>
+                <li>Set Receiver Sensitivity.</li>
+                <li>Solve Link Budget for Required P<sub>t</sub> (or Margin).</li>
+                <li>Calculate Fresnel Zone Clearance.</li>
+                <li>Add Earth Curvature + Fresnel Clearance to get Antenna Height.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Calculate the minimum transmit power needed for a 50km link at 11GHz with 1m dishes.
+                <span class="q-hint">Calculate FSPL -> Calculate Gains -> Use Link Budget formula: P<sub>t</sub> = P<sub>r</sub> - G<sub>t</sub> - G<sub>r</sub> + L<sub>p</sub> + Losses.</span>
+            </div>
+            <div class="question-card">
+                Why is antenna height critical in long-range microwave?
+                <span class="q-hint>Two reasons: 1. Clear the Fresnel zone (60% rule). 2. Overcome Earth curvature (h = D^2/8R).</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 07 -->
+    <section id="lec7">
+        <h2><span class="lecture-badge">Lec 07</span> Satellite Fundamentals</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Satellite:</strong> Object orbiting a larger body. Artificial satellites are used for Comm, Nav, Observation.</li>
+                <li><strong>Orbits:</strong> Defined by Altitude and Period.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: Orbit Comparison</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Altitude</th>
+                    <th>Period</th>
+                    <th>Key Use</th>
+                </tr>
+                <tr>
+                    <td><strong>LEO</strong></td>
+                    <td>160 – 2,000 km</td>
+                    <td>90 – 120 min</td>
+                    <td>Starlink, ISS, Earth Observation (Low latency)</td>
+                </tr>
+                <tr>
+                    <td><strong>MEO</strong></td>
+                    <td>2,000 – 35,786 km</td>
+                    <td>2 – 12 hours</td>
+                    <td><strong>GPS</strong>, Galileo, Navigation</td>
+                </tr>
+                <tr>
+                    <td><strong>GEO</strong></td>
+                    <td>35,786 km</td>
+                    <td>24 hours (Fixed)</td>
+                    <td>TV Broadcasting, Weather (High latency ~240ms)</td>
+                </tr>
+                <tr>
+                    <td><strong>HEO</strong></td>
+                    <td>Elliptical</td>
+                    <td>12 – 24 hours</td>
+                    <td>Coverage of high latitudes (Russia/Arctic)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                Which orbit is used for GPS and why?
+                <span class="q-hint>MEO (Medium Earth Orbit). It provides a balance between coverage area and latency, allowing global coverage with fewer satellites than LEO.</span>
+            </div>
+            <div class="question-card">
+                Compare GEO and LEO.
+                <span class="q-hint>GEO appears stationary (good for TV) but has high latency. LEO is fast (low latency) but requires many satellites for coverage and moves quickly.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 08 -->
+    <section id="lec8">
+        <h2><span class="lecture-badge">Lec 08</span> Satellite Segments & Transmission</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>Segments:</strong> Space (Satellite), Ground (Stations/Control), User (Terminals).</li>
+                <li><strong>Uplink:</strong> Earth → Satellite (Higher Freq).</li>
+                <li><strong>Downlink:</strong> Satellite → Earth (Lower Freq).</li>
+                <li><strong>Transponder:</strong> Device on satellite that Receives → Amplifies → Frequency Shifts → Retransmits.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: Frequency Bands</h3>
+            <table>
+                <tr>
+                    <th>Band</th>
+                    <th>Uplink (GHz)</th>
+                    <th>Downlink (GHz)</th>
+                    <th>Application</th>
+                </tr>
+                <tr>
+                    <td><strong>L</strong></td>
+                    <td>1.6</td>
+                    <td>1.5</td>
+                    <td>GPS, Mobile (Satellite phones)</td>
+                </tr>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>TV, Fixed Services (Less rain fade)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ku</strong></td>
+                    <td>14</td>
+                    <td>11-12</td>
+                    <td>DTH TV, VSAT (Smaller dishes)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ka</strong></td>
+                    <td>30</td>
+                    <td>20</td>
+                    <td>High-Speed Internet (Starlink, High Bandwidth)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>📝 Common Exam Questions</h3>
+            <div class="question-card">
+                What is the function of a Transponder?
+                <span class="q-hint>It acts as a repeater: receives the weak uplink signal, amplifies it, changes the frequency (to avoid interference), and sends it back down.</span>
+            </div>
+            <div class="question-card">
+                Why is the Uplink frequency higher than the Downlink frequency?
+                <span class="q-hint>Higher frequency suffers more atmospheric loss, but the ground station can transmit higher power more easily than the satellite can. Separating frequencies prevents interference.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lec 09 -->
+    <section id="lec9">
+        <h2><span class="lecture-badge">Lec 09</span> Satellite Navigation Systems</h2>
+        
+        <div class="block">
+            <h3>🔑 Core Concepts</h3>
+            <ul>
+                <li><strong>GNSS:</strong> Global Navigation Satellite System (e.g., GPS, GLONASS, Galileo, BeiDou).</li>
+                <li><strong>Trilateration <span class="arabic-term">(التثلث)</span>:</strong> Determining position by intersecting spheres from multiple satellites.</li>
+                <li><strong>Requirement:</strong> At least 4 satellites (3 for position X,Y,Z; 1 for time correction).</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>⚡ Quick Reference: GNSS Comparison</h3>
+            <table>
+                <tr>
+                    <th>System</th>
+                    <th>Country</th>
+                    <th>Orbit</th>
+                    <th>Civil Accuracy</th>
+                </tr>
+                <tr>
+                    <td><strong>GPS</strong></td>
+                    <td>USA</td>
+                    <td>MEO</td>
+                    <td>~5 m</td>
+                </tr>
+                <tr>
+                    <td><strong>GLONASS</strong></td>
+                    <td>Russia</td>
+                    <td>MEO</td>
+                    <td>~5-10 m</td>
+                </tr>
+                <tr>
+                    <td><strong>Galileo</strong></td>
+                    <td>EU</td>
+                    <td>MEO</td>
+                    <td>&lt;1 m (High Accuracy)</td>
+                </tr>
+                <tr>
+                    <td><strong>BeiDou</strong></td>
+                    <td>China</td>
+                    <td>MEO + GEO</td>
+                    <td>&lt;1 m (Regional)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="block">
+            <h3>🔑 Core Concepts (DGPS)</h3>
+            <ul>
+                <li><strong>Differential GPS (DGPS):</strong> Uses a fixed ground station at a known location to calculate errors and send corrections to nearby receivers.</li>
+                <li><strong>Benefit:</strong> Improves accuracy from meters to centimeters.</li>
+            </ul>
+        </div>
+
+        
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>IT439 Wireless & Mobile Networks &copy; 2025-2026<br>
+    <small>Best reviewed on mobile or printed. Good luck!</small></p>
+</footer>
+
+<script>
+    // Simple smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Highlight active section in nav on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-scroll a');
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').includes(current)) {
+                a.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
